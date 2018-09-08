@@ -1,0 +1,13 @@
+section.event {
+    margin: 1em;
+}
+
+section.event h2 {
+    font-family: 'Average Sans', sans-serif;
+    font-size: 1.4em;
+}
+
+section.event > div.event-time {
+    color: #888;
+    font-size: 1.2em;
+}

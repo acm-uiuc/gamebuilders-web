@@ -1,0 +1,30 @@
+
+ol.games {
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: none;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+}
+
+ol.games li {
+    display: inline-block;
+    width: 20%;
+    line-height: 0px;
+}
+
+ol.games li img {
+    width: 100%;
+    height: 100%;
+}
+
+section.submit {
+    display: block;
+    width: 50%;
+    height: 100%;
+    margin: 16px;
+    font-size: 1.0em;
+    margin-left: 3em;
+    text-align: center;
+}
