@@ -1,49 +1,51 @@
 fadein = false;
 
-if ($("#videoblock").width() > 1000){
-    $("#videoblock").css({"visibility":"hidden"});
-    $("#videoblock").fadeTo(0, 0.0);
+start_func = function(){
+   if ($("#videoblock").width() > 1000){
+        $("#videoblock").css("opacity", 0);
+       $("#downarrow").css("opacity", 1);
+       fadein = false;
+   }else{
+        $("#videoblock").css("opacity", 1);
+       $("#downarrow").css("opacity", 0);
+       fadein = true;
+   }
+    $("#downarrow").css("transition", "opacity 0.6s");
+    $("#videoblock").css("transition", "opacity 0.6s");
 }
-else{
-    $("#videoblock").css({"visibility":"visible"});
-    $("#videoblock").fadeTo(0, 1.0);
-}
-
-
-$(window).on('beforeunload', function() {
-    $(window).scrollTop(0);
-    if ($("#videoblock").width() > 1000){
-    $("#videoblock").css({"visibility":"hidden"});
-    $("#videoblock").fadeTo(0, 0.0);
-    }else{
-        $("#videoblock").css({"visibility":"visible"});
-        $("#videoblock").fadeTo(0, 1.0);
-    }
-});
 
 big_func = function(){
     if ($("#videoblock").width() > 1000){
         if ($(window).scrollTop() > 60){
             if (!fadein){
                 fadein = true;
-                //alert("brother moment");
-                $("#videoblock").css({"visibility":"visible"});
-                $("#videoblock").fadeTo(70, 1.0);
+                $("#downarrow").css("opacity", 0);
+                $("#videoblock").css("opacity", 1);
             }
         }
         else{
             if (fadein){
                 fadein = false;
-                $("#videoblock").fadeTo(30, 0.0);
+                $("#downarrow").css("opacity", 1);
+                $("#videoblock").css("opacity", 0);
             }
         }
-        $("#downarrow").css("opacity", 1 - ($(window).scrollTop() / 60));
     }else{
         fadein = true;
-        $("#videoblock").fadeTo(1, 1.0);
         $("#downarrow").css("opacity", 0);
+        $("#videoblock").css("opacity", 1);
     }
 }
+$(window).on('load', function() {
+    start_func();
+});
+$(window).on('beforeunload', function() {
+    $("#downarrow").css("transition", "opacity 0s");
+    $("#videoblock").css("transition", "opacity 0s");
+    $(window).scrollTop(0);
+});
+
+
 
 $(window).scroll(function(){
     big_func();
@@ -51,9 +53,6 @@ $(window).scroll(function(){
 $(window).resize(function(){
     big_func();
 });
-
-// Button Hover Animations
-$("#btn_animated")
 
 $("#brand_box").hover(
     function(){$("#da_logo").animate({height: "28px"}, 100);},        
