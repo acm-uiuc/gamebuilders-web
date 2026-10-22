@@ -372,7 +372,7 @@ window.onload = () => {
             }
 
             let data_id = i;
-            bar_img.addEventListener('click', (e)=>{ window.open(game_data[data_id].itch_link, '_blank'); }, false);
+            bar_img.addEventListener('click', (e)=>{ window.open(game_data[data_id].itch_link+'/entries', '_blank'); }, false);
 
             game_bar.appendChild(jam_side);
             game_bar.appendChild(bar_img);
